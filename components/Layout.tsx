@@ -1,32 +1,32 @@
-import React, { ReactNode } from "react";
-import Link from "next/link";
-import Head from "next/head";
+import { useRouter } from "next/router";
 
-type Props = {
-  children?: ReactNode;
-  title?: string;
-};
+export default function Home() {
+  const router = useRouter();
 
-const Layout = ({ children, title = "This is the default title" }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">Home</Link> | <Link href="/about">About</Link> |{" "}
-        <Link href="/users">Users List</Link> |{" "}
-        <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-);
+  return (
+    <div style={{ padding: 40, maxWidth: 600, margin: "auto", textAlign: "center" }}>
+      <h1 style={{ marginBottom: 40 }}>🧠 HiChatChain — Escolha um serviço</h1>
 
-export default Layout;
+      <button
+        style={{ padding: "12px 20px", marginBottom: 20, width: "100%" }}
+        onClick={() => router.push("/juridico")}
+      >
+        ⚖️ Análise Jurídica
+      </button>
+
+      <button
+        style={{ padding: "12px 20px", marginBottom: 20, width: "100%" }}
+        onClick={() => router.push("/locais")}
+      >
+        📍 Buscar Pontos Comerciais
+      </button>
+
+      <button
+        style={{ padding: "12px 20px", marginBottom: 20, width: "100%" }}
+        onClick={() => router.push("/conteudo")}
+      >
+        ✍️ Gerar Conteúdo
+      </button>
+    </div>
+  );
+}
